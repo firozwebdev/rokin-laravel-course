@@ -20,6 +20,11 @@ Route::get('/category', [
     'uses' => 'DashboardController@category',
     'as' =>'category'
 ]);
+Route::post('/category', [
+    'uses' => 'CategoryController@saveCategory',
+    'as' =>'category.save'
+]);
+
 Route::get('/product', [
     'uses' => 'DashboardController@product',
     'as' =>'product'
