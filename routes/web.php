@@ -17,12 +17,28 @@ Route::get('/', [
     'as' =>'dashboard'
 ]);
 Route::get('/category', [
-    'uses' => 'DashboardController@category',
+    'uses' => 'CategoryController@category',
     'as' =>'category'
 ]);
 Route::post('/category', [
     'uses' => 'CategoryController@saveCategory',
     'as' =>'category.save'
+]);
+Route::get('/manage-category', [
+    'uses' => 'CategoryController@manageCategory',
+    'as' =>'category.manage'
+]);
+Route::get('/edit-category/{id}', [
+    'uses' => 'CategoryController@editCategory',
+    'as' => 'category.edit'
+]);
+Route::post('/update-category', [
+    'uses' => 'CategoryController@updateCategory',
+    'as' =>'category.update'
+]);
+Route::get('/delete-category/{id}', [
+    'uses' => 'CategoryController@deleteCategory',
+    'as' =>'category.delete'
 ]);
 
 Route::get('/product', [

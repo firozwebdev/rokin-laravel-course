@@ -10,13 +10,10 @@ class DashboardController extends Controller
     {
         return view('pages.dashboard');
     }
-    public function category ()
-    {
-        return view('pages.category');
-    }
+   
     public function product ()
     {
-        return view('pages.product');
+        return view('pages.product.product');
     }
 
 }
