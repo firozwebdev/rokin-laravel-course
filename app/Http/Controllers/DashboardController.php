@@ -11,9 +11,6 @@ class DashboardController extends Controller
         return view('pages.dashboard');
     }
    
-    public function product ()
-    {
-        return view('pages.product.product');
-    }
+  
 
 }

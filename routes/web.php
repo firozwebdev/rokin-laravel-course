@@ -42,8 +42,8 @@ Route::get('/delete-category/{id}', [
 ]);
 
 Route::get('/product', [
-    'uses' => 'DashboardController@product',
-    'as' =>'product'
+    'uses' => 'ProductController@index',
+    'as' =>'add.product'
 ]);
 
 
