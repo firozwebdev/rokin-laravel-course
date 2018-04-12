@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -14,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       
-        return view('pages.product.add-product');
+        $categories = Category::all();
+        return view('pages.product.add-product')->with('categories',$categories);
         
     }
 
@@ -26,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +39,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('image');
+        $fileName = $file->getClientOriginalName();
+        
+        $request->file('image')->move("front_assets/upload/",$fileName);
+        if($fileName){
+            Product::create([
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'image' => $fileName,
+                'description' => $request->description,
+                'type' => $request->type,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'status' => $request->status,
+            ]);
+            Session::put('message', 'Save Product Information Successfully !');
+            return redirect()->route('add.product');
+        }else{
+            return "Image is not selected";
+        }
     }
 
     /**

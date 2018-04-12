@@ -45,5 +45,9 @@ Route::get('/product', [
     'uses' => 'ProductController@index',
     'as' =>'add.product'
 ]);
+Route::post('/product', [
+    'uses' => 'ProductController@store',
+    'as' =>'product.save'
+]);
 
 
