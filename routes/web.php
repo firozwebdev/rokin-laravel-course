@@ -51,3 +51,8 @@ Route::post('/product', [
 ]);
 
 
+Route::get('/products', [
+    'uses' => 'ProductController@getAllProducts',
+    //'as' =>'add.product'
+]);
+

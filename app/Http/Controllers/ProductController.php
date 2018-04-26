@@ -21,6 +21,14 @@ class ProductController extends Controller
         
     }
 
+    public function getAllProducts(){
+        $categories = Category::all();
+        return response()->json([
+            'categories' => $categories
+        ]);
+       
+    }
+
     /**
      * Show the form for creating a new resource.
      *

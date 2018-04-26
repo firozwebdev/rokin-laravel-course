@@ -35,7 +35,7 @@
         <script src="{{ asset('js/easypiechart-data.js') }}"></script>
         <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
         
-        
+        @yield('below-footer-script')
         
        
         <script>
