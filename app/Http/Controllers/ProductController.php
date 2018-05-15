@@ -113,4 +113,15 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function product_by_id($id)
+    {
+        $category = Category::findOrFail($id);
+        return response()->json([
+            'category' => $category
+        ]);
+    }
+
+
 }

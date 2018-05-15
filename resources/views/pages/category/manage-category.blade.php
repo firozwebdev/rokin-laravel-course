@@ -45,7 +45,39 @@
 
         
     </div>
-</div>  
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Form</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="">Category Name</label>
+                <input type="text" name="categoryName" class="form-control" id="categoryName">
+            </div>
+            <div class="form-group">
+                <label for="">Category Description</label>
+                <input type="text" name="categoryDescription"  id="categoryDescription" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit"  class="form-control btn btn-primary" value="Update Category">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
 @endsection
 @section('below-footer-script')
     <script>
@@ -55,7 +87,7 @@
             url: "/products",
            
             //data: { name: "John", location: "Boston" }
-        }).done(function( products ) {
+        }).done(function( categories ) {
 
             responseData +=`
                 <table class="table table-striped table-bordered">
@@ -69,15 +101,15 @@
                    
              
             `;
-            console.log(products);
+            //console.log(categories);
            
            
-                $.each(products.categories, function(i, product) {
+                $.each(categories.categories, function(i, category) {
                     responseData += `<tr>
-                        <td>${product.name}</td>
-                        <td>${product.description}</td>
+                        <td>${category.name}</td>
+                        <td>${category.description}</td>
                        
-                    <td><a class="btn btn-success" href="{{ route('category.edit',['id'=>$item->id]) }}">Edit</a> | <a class="btn btn-danger" href="{{ route('category.delete',['id'=>$item->id]) }}"  onclick=" return confirm('Are you sure to delete'); ">Delete</a></td>
+                    <td><button   onclick="myFunction(${category.id})" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Edit</button> | <a class="btn btn-danger" href="{{ route('category.delete',['id'=>$item->id]) }}"  onclick=" return confirm('Are you sure to delete'); ">Delete</a></td>
                     </tr>`
                             
                 });
@@ -85,6 +117,17 @@
                     </table>
                 `
             $('#helloWorld').html(responseData);
+                   
         });
+
+         function myFunction(category_id){
+             
+
+          $.get( "/product/"+category_id, function( data ) {
+               $('#categoryName').val(data.category.name);
+               $('#categoryDescription').val(data.category.description);
+              //console.log(data.category.name);
+          });
+         }
     </script>
 @endsection

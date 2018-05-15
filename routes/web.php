@@ -45,6 +45,10 @@ Route::get('/product', [
     'uses' => 'ProductController@index',
     'as' =>'add.product'
 ]);
+Route::get('/product/{id}', [
+    'uses' => 'ProductController@product_by_id',
+   
+]);
 Route::post('/product', [
     'uses' => 'ProductController@store',
     'as' =>'product.save'
