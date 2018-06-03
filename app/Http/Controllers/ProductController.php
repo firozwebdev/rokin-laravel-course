@@ -123,5 +123,9 @@ class ProductController extends Controller
         ]);
     }
 
+    public function ajaxUpateCategory(Request $request){
+       return $request->category;
+    }
+
 
 }

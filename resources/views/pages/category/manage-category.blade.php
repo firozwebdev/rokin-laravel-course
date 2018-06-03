@@ -58,17 +58,22 @@
           <h4 class="modal-title">Edit Form</h4>
         </div>
         <div class="modal-body">
-            <div class="form-group">
-                <label for="">Category Name</label>
-                <input type="text" name="categoryName" class="form-control" id="categoryName">
-            </div>
-            <div class="form-group">
-                <label for="">Category Description</label>
-                <input type="text" name="categoryDescription"  id="categoryDescription" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="submit"  class="form-control btn btn-primary" value="Update Category">
-            </div>
+            <form>
+                
+                <input type="hidden" name="categoryId" class="form-control" id="categoryId">
+                <div class="form-group">
+                    <label for="">Category Name</label>
+                    <input type="text" name="categoryName" class="form-control" id="categoryName">
+                </div>
+                <div class="form-group">
+                    <label for="">Category Description</label>
+                    <input type="text" name="categoryDescription"  id="categoryDescription" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="UpdateCategoryButton"  class="form-control btn btn-primary" value="Update Category">
+                </div>
+            </form>
+            
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -124,10 +129,47 @@
              
 
           $.get( "/product/"+category_id, function( data ) {
+               $('#categoryId').val(data.category.id);
                $('#categoryName').val(data.category.name);
                $('#categoryDescription').val(data.category.description);
               //console.log(data.category.name);
           });
          }
+
+
+
+         $('#UpdateCategoryButton').on('click',function(e){
+            e.preventDefault();
+            var token = '{{ csrf_token() }}';
+            var category = {
+                categoryId: $('#categoryId').val(),
+                categoryName: $('#categoryName').val(),
+                categoryDescription: $('#categoryDescription').val(),
+            };
+            //console.log(category);
+            
+            
+            var data = {
+                _token: token,
+                "category" : category
+            };
+            // $.ajax({
+            //     type: 'POST',
+            //     url: '/update-ajax-category',
+            //     data: {
+            //         "_token": "{{ csrf_token() }}",
+            //         category : category
+            //     },
+            //     success: function (response) {
+            //         console.log(response);
+            //     },
+            //     error: function (reject) {
+            //         console.log(reject);
+            //     }
+            // });
+            $.post('/update-ajax-category', data ,function(response){
+                console.log(response);
+            });
+         });
     </script>
 @endsection

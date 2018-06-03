@@ -53,6 +53,10 @@ Route::post('/product', [
     'uses' => 'ProductController@store',
     'as' =>'product.save'
 ]);
+Route::post('/update-ajax-category', [
+    'uses' => 'ProductController@ajaxUpateCategory',
+    'as' =>'ajax.update'
+]);
 
 
 Route::get('/products', [
