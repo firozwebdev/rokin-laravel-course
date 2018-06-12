@@ -124,7 +124,14 @@ class ProductController extends Controller
     }
 
     public function ajaxUpateCategory(Request $request){
-       return $request->category;
+        //return $request->category['categoryId'];
+        $category = Category::findOrFail($request->category['categoryId']);
+        $category->name = $request->category['categoryName'];
+        $category->description = $request->category['categoryDescription'];
+        $category->save();
+        return response()->json([
+            'message' => "Category is updated"
+        ]);
     }
 
 

@@ -86,7 +86,9 @@
 @endsection
 @section('below-footer-script')
     <script>
-        var  responseData = '';
+        getData();
+        function getData(){
+            var  responseData = '';
         $.ajax({
             method: "GET",
             url: "/products",
@@ -124,6 +126,7 @@
             $('#helloWorld').html(responseData);
                    
         });
+        }
 
          function myFunction(category_id){
              
@@ -168,8 +171,12 @@
             //     }
             // });
             $.post('/update-ajax-category', data ,function(response){
-                console.log(response);
+                //console.log(response);
+                //window.location.reload();
+                getData();
+               
             });
+            $('#myModal').modal('hide');
          });
     </script>
 @endsection
