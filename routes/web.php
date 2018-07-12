@@ -41,26 +41,28 @@ Route::get('/delete-category/{id}', [
     'as' =>'category.delete'
 ]);
 
-Route::get('/product', [
-    'uses' => 'ProductController@index',
-    'as' =>'add.product'
-]);
-Route::get('/product/{id}', [
-    'uses' => 'ProductController@product_by_id',
+// Route::get('/product', [
+//     'uses' => 'ProductController@index',
+//     'as' =>'add.product'
+// ]);
+// Route::get('/product/{id}', [
+//     'uses' => 'ProductController@product_by_id',
    
-]);
-Route::post('/product', [
-    'uses' => 'ProductController@store',
-    'as' =>'product.save'
-]);
-Route::post('/update-ajax-category', [
-    'uses' => 'ProductController@ajaxUpateCategory',
-    'as' =>'ajax.update'
-]);
+// ]);
+// Route::post('/product', [
+//     'uses' => 'ProductController@store',
+//     'as' =>'product.save'
+// ]);
+
+Route::resource('products','ProductController');
+// Route::post('/update-ajax-category', [
+//     'uses' => 'ProductController@ajaxUpateCategory',
+//     'as' =>'ajax.update'
+// ]);
 
 
-Route::get('/products', [
-    'uses' => 'ProductController@getAllProducts',
-    //'as' =>'add.product'
-]);
+// Route::get('/products', [
+//     'uses' => 'ProductController@getAllProducts',
+//     //'as' =>'add.product'
+// ]);
 

@@ -8,7 +8,7 @@
         <li class="active"><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
         <li><a href="{{ route('category') }}"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Add Category</a></li>
         <li><a href="{{ route('category.manage') }}"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Manage Category</a></li>
-        <li><a href="{{ route('add.product') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg>Add Product</a></li>
+        <li><a href="{{ route('products.create') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg>Add Product</a></li>
         <li><a href="tables.html"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
         <li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
         <li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>

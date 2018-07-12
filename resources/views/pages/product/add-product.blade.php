@@ -25,7 +25,7 @@
     
     <div class="row">
         <div class="col-md-6 ">
-            {!!Form::open( array('route' =>['product.save'],'method'=>'post','files'=>true,'class'=>'form-horizontal contact_form'))!!}
+            {!!Form::open( array('route' =>['products.store'],'method'=>'post','files'=>true,'class'=>'form-horizontal contact_form'))!!}
 
             <div class="form-group">
                 {{Form::label('title', 'Product Title', array('class' => ''))}}
