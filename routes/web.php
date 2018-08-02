@@ -54,7 +54,7 @@ Route::get('/delete-category/{id}', [
 //     'as' =>'product.save'
 // ]);
 
-Route::resource('products','ProductController');
+// Route::resource('products','ProductController');
 // Route::post('/update-ajax-category', [
 //     'uses' => 'ProductController@ajaxUpateCategory',
 //     'as' =>'ajax.update'
@@ -66,3 +66,8 @@ Route::resource('products','ProductController');
 //     //'as' =>'add.product'
 // ]);
 
+/* 
+    Testing routes for video
+*/
+
+Route::resource('posts','PostController');

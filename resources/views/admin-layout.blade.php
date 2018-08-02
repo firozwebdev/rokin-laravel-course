@@ -26,6 +26,7 @@
         @yield('manage-category')
         @yield('edit-category')
         @yield('product')
+        @yield('product-index')
 
 
         <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
